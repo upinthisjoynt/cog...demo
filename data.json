@@ -1,0 +1,72 @@
+{
+  "page": {
+    "initiation": {
+      "project_general": {
+        "displayName": "Project General",
+        "collapsable": true,
+        "sub_groups": {
+          "volume": {
+            "displayName": "Volume",
+            "read_only": true,
+            "currency_code_name": "USA",
+            "complete": false,
+            "fields": [
+              {
+                "displayName": "Initial Project Estimated Total Sales Volume",
+                "dataName": "initial_project_estimated_total_sales_volume",
+                "required": true,
+                "value": [
+                  500,
+                  600,
+                  700,
+                  800
+                ],
+                "actions": {
+                  "field": "project_target",
+                  "operation": "initial_project_estimated_gross_sales - initial_project_estimated_total_sales_volume"
+                }
+              },
+              {
+                "displayName": "Initial Project Estimated Gross Sales",
+                "dataName": "initial_project_estimated_gross_sales",
+                "required": true,
+                "value": [
+                  1500,
+                  1600,
+                  1700,
+                  1800,
+                  367
+                ],
+                "actions": {
+                  "field": "project_target",
+                  "operation": "initial_project_estimated_gross_sales < initial_project_estimated_total_sales_volume",
+                  "check": true
+                }
+              },
+              {
+                "displayName": "Project Target",
+                "dataName": "project_target",
+                "project_target": {
+                  "data": [
+                    1000,
+                    1100
+                  ],
+                  "operation": "initial_project_estimated_gross_sales < project_target"
+                }
+              }
+            ]
+          },
+          "variable_contribution_margin": {
+            "displayName": "Variable Contribution Margin",
+            "read_only": true,
+            "currency_code_name": "USA",
+            "complete": false
+          }
+        }
+      }
+    }
+  },
+  "projectData": {
+    "fields": {}
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="handlebars.js"></script>
+    <style>
+        .required {
+            border: 1px solid red;
+        }
+    </style>
+    <title>SLM Config Demo</title>
+</head>
+
+<body>
+<script id="form-template" type="text/x-handlebars-template">
+
+<!-- hard coded for demo purposes.  Should be driven by data object -->
+{{page.initiation.project_general.displayName}}
+
+<form name="volume">
+    <!-- hard coded for demo purposes.  Should be driven by data object -->
+    {{#page.initiation.project_general.sub_groups.volume.fields}}
+        
+        <label>{{displayName}}</label>
+        {{#if value}} 
+        <select id="{{dataName}}">
+            {{#each value as |item|}}
+            <option value="{{item}}">{{item}}</option>
+            {{/each}}
+        </select>
+        <hr />
+        {{else}}
+            <input id="{{dataName}}" type="text" value="" />
+        {{/if}}
+    {{/page.initiation.project_general.sub_groups.volume.fields}}  
+</form>
+   
+</script>
+
+<div id="demo-form"></div>
+<script src="demo_core.js"></script>
+</body>
+
+</html>
